@@ -1,0 +1,54 @@
+* Problem Solving Patterns
+** Data Structure Patterns
+*** Primitive types
+Know how ~int~, ~char~, ~double~ etc are represented in memory and the primitive operations on them.
+*** Arrays and strings
+Fast access for element at index, slow lookups (unless sorted) and insertions. Be comfortable with notions of iteration, resizing, partitioning, merging etc. Know how strings are represented in memory. Understand basic operators such as comparison, copying, matching, joining, splitting, etc.
+*** Lists
+Understand trade-offs with repect to arrays. Be comfortable with iteration, insertion, and detection within singly and double linked lists. Know how to implement a list with dynamic allocation, and with arrays.
+*** Stacks and queues
+Understand insertion and deletion. Know array and linked list implementations.
+*** Binary trees
+Use for representing hierarchical data. Know about depth, height, leaves, searh path, traversal sequences, successor/predecessor operations.
+*** Heaps
+Key benefit /O(1)/ lookup find-max, /O(log n)/ insertion, and /O(log n)/ deletion of max. Node and array representation. Min-heap variant.
+*** Hash tables
+Key benefit: /O(1)/ insertions, deletions and lookups. Key disadvantages: not suitable for order-related queries; need for resizing; poor worst-case performance. Understand implementation using array of buckets and collision chains. Know hash functions for integers, strings, objects. Understand importance of equals function. Variants such as Bloom filters.
+*** Binary search trees
+Key benefit: /O(log n)/ insertions, deletion, lookups, find-min, find-max, successor, predecessor when tree is balanced. Understand implementation using nodes and pointers. Be familiar with notion of balance, and operations maintaining balance. Know how to augment a binary search tree, e.g., interval trees and dynamic order statistics.
+*** Other data structures
+Skip lists, Treaps, Fibonacci heaps, Disjoint-sets, Tries
+** Algorithm Design Patterns
+*** Sorting
+Uncover some structure by sorting the input.
+*** Recursion
+If the structure of the input is defined in a recursive manner, design a recursive algorithm that follows the input definition.
+*** Divide and conquer
+Divide the problem into two or more smaller independent subproblems and solve the original problem using solutions to the subproblems.
+*** Dynamic programming
+Compute solution for smaller instances of a given problem and use these solutions to construct a solution to the problem. Cache for performance.
+*** The greedy method
+Compute a solution in stages, making choices that are locally optimum at step, these choices are never undone.
+*** Incremental improvement
+Quickly build a feasible solution and improve its quality with small, local updates.
+*** Elimination
+Identify and rule out potential solutions that are sub-optimal or dominated by other solutions.
+*** Parallelism
+Decompose the problem into subproblems that can be solved independently on different machines.
+*** Caching
+Store computation and later look it up to save work.
+*** Randomization
+Use randomization within the algorithm to reduce complexity.
+*** Approximation
+Efficiently compute a suboptimum solution that is of acceptable quality.
+*** State
+Identify an appropriate notion of state.
+** Abstract Analysis Patterns
+*** Case analysis
+*** Small examples
+*** Iterative refinement or brute-force solution
+*** Reduction
+*** Graph modeling
+*** Write an equation
+*** Variation
+*** Complexity analysis
