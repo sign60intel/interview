@@ -3,11 +3,26 @@
 *** Primitive types
 Know how ~int~, ~char~, ~double~ etc are represented in memory and the primitive operations on them.
 **** Be very comfortable with the *bitwise operators*, particularly ~XOR~.
+***** Be very familiar with the bit-wise operators such as ~6&4~, ~1|2~, ~8>>1~, ~1<<10~, ~~0~, ~15^x~.
 **** Understand how to use *masks* and create them in an *machine independent* way.
 **** Know fast ways to *clear the lowermost set bit* (and by extension, set the lowermost 0, get its index, etc)
 **** Understand *signedness* and its implications to *shifting*
 **** Consider using a *cache* to accelerate operations by using it to brote-force small inputs.
 **** Be aware that *commutativity* and *associativity* can be used to perform operations in *parallel* and *reorder* operations.
+**** <cmath>
+***** Know the key methods ~abs(-34)~, ~fabs(3.14)~, ~ceil(2.17)~, ~floor(3.14)~, ~min(x, -4)~, ~max(3.14, y)~, ~pow(2.71, 3.14)~, ~log(7.12)~, ~sqrt(255)~ etc.
+**** <limits>
+***** Know the constants denoting the maximum and minimum values for numeric types, etc, e.g.
+****** ~numeric_limits<int>::min()~
+****** ~numeric_limits<float>::max()~
+****** ~numeric_limits<double>::infinity()~
+**** Take extra care when comparing floating point values.
+**** Know how to interconvert integers, characters and strings, e.g. ~x - '0'~ to convert a digit character to an integer.
+**** <random>
+***** Key methods
+****** ~uniform_int_distribution<> dis(1, 6)~ which returns an integer value in [1, 6]
+****** ~uniform_real_distribution<double> dis(1.3, 2.9)~ which returns a floating point number in ~[1.3, 2.9]~
+****** ~generate_canonical<double, 10>~ which returns a value in ~[0, 1]~
 *** Arrays and strings
 Fast access for element at index, slow lookups (unless sorted) and insertions. Be comfortable with notions of iteration, resizing, partitioning, merging etc. Know how strings are represented in memory. Understand basic operators such as comparison, copying, matching, joining, splitting, etc.
 *** Lists
