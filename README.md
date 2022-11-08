@@ -1,1 +1,1 @@
-# My C++ interview preparation
+# C++ interview preparation
