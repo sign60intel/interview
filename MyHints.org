@@ -1,0 +1,62 @@
+* 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
+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
+* GDB: A quick guide to make your debugging easier
+** Use the right compiler switches
+*** Debug support for optimized code is still work in progress on both GCC and CLANG, so for the best debugging experience use the newest version of these tools as possible. It is not a bad idea to also use the newest version of GDB as well, since there are many new features and bug fixes to make your work more pleasant.
+*** In software development, debug builds are normally compiled using -g switch which enables debug symbols in the compiler output. However, if you are often seeing “value optimized out” you should enable additional debugging symbols with -ggdb3 instead of -g switch. This will allow you to debug macros within GDB as well.
+*** Dwarf is a debugging file format many tools use to keep debugging information in binary files. If your compiler supports it, it is advisable to specify -dwarf-5 switch to your compiler in order to use the newest version of DWARF.
+*** Enable -fno-omit-frame-pointer on your compiler. This will enable you to see the full call stack, otherwise smaller functions might be missing. This option has minimal performance impact on x86-64 and should be used always because it allows simpler debugging on the field.
+*** If you are still having problems with debugging optimized code, decrease optimization level from 3 or 2 to optimization level g. Optimization level g (-Og) turns on only those optimizations that do not interfere with debugging.
+** Useful GDB commands
+*** ~gdb --args~
+#+BEGIN_SRC shell
+  gdb --args ./program --arg1 value1 --arg2 value2
+#+END_SRC
+#+BEGIN_SRC shell
+  ENV_VARIABLE=value gdb --args ./program --arg1 value1 --arg2 value2
+#+END_SRC
+*** Stop GDB at the first line of ~main()~
+**** You started up your gdb instance using ~gdb --args~ and now you would like to set up a breakpoint. The problem is that, since no library is loaded except for your program, you will not be able to do that.
+**** Solution is to use ~start~ command. Command start just puts a temporary breakpoint on the first line of ~main~ and runs the program. Program stops at the first line of ~main~ and there you can insert your breakpoints easier since all libraries have already been loaded.
+*** Command: ~until~
+**** ~until~ is a useful little command. If your program is paused in the debugger, and you want to move it forward a few lines, instead of running next several times, type ~until line_number~. It will move the debugger to that particular line in the source code.
+*** Command: ~ignore~
+**** When you are debugging a problem, it happens often that the problem reproduces after a breakpoint is hit exact number of times. For example, problem appears in the 1,072nd invocation of function ~test_fun()~.
+**** You can use ignore command to quickly reproduce this. Load your program into GDB and then:
+#+BEGIN_SRC shell
+(gdb) break linked_list.h:111
+Breakpoint 2 at 0x407538: linked_list.h:111. (12 locations)
+(gdb) ignore 2 200
+Will ignore next 200 crossings of breakpoint 2.
+#+END_SRC
+**** ~ignore~ command skips the breakpoint for the given number of times.
+**** If you want to see how many times breakpoint is hit use ~info breakpoints~, e.g:
+#+BEGIN_SRC shell
+(gdb) ignore 2 200
+Will ignore next 200 crossings of breakpoint 2.
+...
+(gdb) info b
+Num     Type           Disp Enb Address            What
+2       breakpoint     keep y   <MULTIPLE>
+        breakpoint already hit 201 times  
+#+END_SRC
+*** Commands: ~info locals~ & ~bt full~
+**** 
+*** Command: ~bt number~
+*** Command: ~command~
+*** Dynamic ~printf~
+*** Watchpoints
+*** Command: ~thread~ ~apply~ ~all~
+*** Execute command from a script
+*** Command: ~save breakpoints~
+*** Log gdb output to a file
+** Text User Interface
+** Recording
+** ~.gdbinit~
+** Debugging tips
+*** Repeat program through GDB until failure
+*** Debugging memory corruption with record and watchpoints
+** Final Words
+** Further Read
+* Как перезапустить браузер Гугл Хром?
+Мало кто знает, но браузер Google Chrome обладает функцией мгновенного перезапуска в один клик с сохранением всех ранее открытых вкладок. Чтобы выполнить такую перезагрузку пройдите по ссылке chrome://restart/(или вставьте эту ссылку в адресную строку Гугл Хром) и нажмите «Ввод»— это служебная команда Google Chrome.
